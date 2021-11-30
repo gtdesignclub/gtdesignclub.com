@@ -1,6 +1,6 @@
 import React from "react";
 import tw, { styled } from "twin.macro";
-import Link from "gatsby";
+import { Link } from "gatsby";
 import logo from "../images/logo-text.png";
 import facebook from "../images/facebook.png";
 import instagram from "../images/instagram.png";
@@ -16,7 +16,7 @@ const Container = styled.div`
 `;
 
 const LogoLink = styled(Link)`
-  ${tw`no-underline text-inherit shadow-none hover:bg-transparent`};
+  ${tw`no-underline shadow-none hover:bg-transparent`};
 `;
 
 const LogoImage = styled.img`

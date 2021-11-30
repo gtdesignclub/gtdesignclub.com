@@ -41,7 +41,10 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        icon: "src/images/icon.png",
+        name: "GT Design Club",
+        short_name: "GT Design Club",
+        start_url: "/",
+        icon: "src/images/logo.png",
       },
     },
     "gatsby-plugin-sharp",
