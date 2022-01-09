@@ -21,12 +21,12 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.gtdesignclub.com",
+    siteUrl: "https://gtdesignclub.com",
     title: "GT Design Club",
     description: "The homepage for Georgia Tech's Design Club.",
     social: {
-      instagram: "www.instagram.com/gtdesignclub",
-      facebook: "https://www.facebook.com/gtdesignclub",
+      instagram: "https://instagram.com/gtdesignclub",
+      facebook: "https://facebook.com/gtdesignclub",
     },
   },
   plugins: [
@@ -58,5 +58,21 @@ module.exports = {
       __key: "images",
     },
     "gatsby-plugin-emotion",
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /icons/,
+        },
+      },
+    },
+    "gatsby-plugin-postcss",
+    // {
+    //     resolve: "gatsby-plugin-postcss",
+    //     options: {
+    //         develop: true,
+    //         tailwind: true
+    //     }
+    // }
   ],
 };

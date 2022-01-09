@@ -6,3 +6,5 @@ import facebook from "../images/facebook.png";
 import instagram from "../images/instagram.png";
 import discord from "../images/discord.png";
 import mail from "../images/mail.png";
+
+export Footer 

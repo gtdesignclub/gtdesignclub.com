@@ -1,12 +1,19 @@
 module.exports = {
   purge: [],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: false,
   theme: {
     fontFamily: {
       header: ["'Marko One'", "sans-serif"],
       body: ["Rubik", "sans-serif"],
     },
-    extend: {},
+    extend: {
+      spacing: {
+        112: "37rem",
+      },
+      colors: {
+        slate: "#333",
+      },
+    },
   },
   variants: {
     extend: {},

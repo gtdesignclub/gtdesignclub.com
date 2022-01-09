@@ -1,2 +1,3 @@
-require("typeface-marko-one");
-require("typeface-rubik");
+import "./src/styles/global.css";
+import "typeface-marko-one";
+import "typeface-rubik";
