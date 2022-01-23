@@ -25,6 +25,7 @@ const Events = () => {
       allContentfulEvent(sort: { fields: [date], order: [DESC] }) {
         edges {
           node {
+            id
             date
             name
             instagramLink
@@ -48,22 +49,23 @@ const Events = () => {
   rows = Object.assign(
     {},
     rows.map((row) => {
+      const id = row.node.id;
       const date = moment(row.node.date).format("MM.DD");
       const name = row.node.name;
       const description = row.node.description.description;
 
-      return { date: date, name: name, description: description };
+      return { id: id, date: date, name: name, description: description };
     })
   );
 
   return (
-    <div>
+    <div id="events">
       <Title>Upcoming Events</Title>
       <PreviewEvent event={events.allContentfulEvent.edges[0].node} />
       <Table>
         <tbody>
           {Object.entries(rows).map(([key, val]) => (
-            <Row>
+            <Row key={val.id}>
               <Cell>{val.date}</Cell>
               <Cell>{val.name}</Cell>
               <Cell>{val.description}</Cell>

@@ -1,4 +1,4 @@
-import { Link } from "gatsby";
+import { graphql, Link, useStaticQuery } from "gatsby";
 import React from "react";
 import tw, { styled } from "twin.macro";
 import Discord from "../icons/discord.svg";
@@ -27,28 +27,55 @@ const SocialLink = styled("a")`
   ${tw`no-underline shadow-none mx-2`}
 `;
 
-const Header = () => (
-  <div>
-    <FlexContainer>
-      <LogoLink to="/">
-        <LogoImage src={logo} alt="GT Design Club" />
-      </LogoLink>
-      <SocialContainer>
-        <SocialLink href="https://facebook.com/gtdesignclub">
-          <Facebook />
-        </SocialLink>
-        <SocialLink href="https://instagram.com/gtdesignclub">
-          <Instagram />
-        </SocialLink>
-        <SocialLink href="https://discord.gg/U8dwwa6BSF">
-          <Discord />
-        </SocialLink>
-        <SocialLink href="mailto:designclubatgt@gmail.com">
-          <Mail />
-        </SocialLink>
-      </SocialContainer>
-    </FlexContainer>
-  </div>
-);
+const Header = () => {
+  const links = useStaticQuery(graphql`
+    query {
+      allContentfulLink {
+        edges {
+          node {
+            platform
+            link
+          }
+        }
+      }
+    }
+  `);
+  const facebook = links.allContentfulLink.edges.find(
+    (el) => el.node.platform.toLowerCase() === "facebook"
+  ).link;
+  const instagram = links.allContentfulLink.edges.find(
+    (el) => el.node.platform.toLowerCase() === "instagram"
+  ).link;
+  const discord = links.allContentfulLink.edges.find(
+    (el) => el.node.platform.toLowerCase() === "discord"
+  ).link;
+  const email = links.allContentfulLink.edges.find(
+    (el) => el.node.platform.toLowerCase() === "email"
+  ).link;
+
+  return (
+    <div>
+      <FlexContainer>
+        <LogoLink to="/">
+          <LogoImage src={logo} alt="GT Design Club" />
+        </LogoLink>
+        <SocialContainer>
+          <SocialLink href={facebook}>
+            <Facebook />
+          </SocialLink>
+          <SocialLink href={instagram}>
+            <Instagram />
+          </SocialLink>
+          <SocialLink href={discord}>
+            <Discord />
+          </SocialLink>
+          <SocialLink href={"mailto:" + email}>
+            <Mail />
+          </SocialLink>
+        </SocialContainer>
+      </FlexContainer>
+    </div>
+  );
+};
 
 export default Header;

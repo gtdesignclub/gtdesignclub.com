@@ -24,14 +24,13 @@ const Description = styled.p`
 `;
 
 const SocialButton = styled("a")`
-  ${tw`bg-[#333] w-[fit-content] inline-block text-white font-bold text-xs px-9 py-2 mt-5 rounded-sm hover:bg-[#4A4A4A]`}
+  ${tw`bg-slate w-[fit-content] inline-block text-white font-bold text-xs px-9 py-2 mt-5 rounded-sm hover:bg-[#4A4A4A]`}
 `;
 
 const FlexContainer = styled.div`
   ${tw`flex flex-col mt-2 items-center sm:flex-row`}
 `;
 
-// TODO: Find better layout for mobile
 const PreviewEvent = ({ event }) => {
   const image = event.photo ? getImage(event.photo) : null;
   const date = event.date;
@@ -56,7 +55,7 @@ const PreviewEvent = ({ event }) => {
             </p>
           </DateContainer>
           {text.map((val, i) =>
-            val ? <Description>{val}</Description> : <br />
+            val ? <Description key={i}>{val}</Description> : <br />
           )}
         </FlexContainer>
         {event.instagramLink && (

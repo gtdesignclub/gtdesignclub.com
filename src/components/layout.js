@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 import tw, { styled } from "twin.macro";
+import Footer from "./footer";
 import Header from "./header";
 
 const Content = styled.main`
@@ -43,24 +44,29 @@ const Layout = ({ children }) => {
     }
   `);
   return (
-    <div className="max-w-full mx-auto bg-white p-8">
-      <Header />
-      <Hero>
-        <SectionContainer className="flex-col mb-6">
-          <Title>{about.allContentfulAbout.edges[0].node.hero}</Title>
-          <Text>{about.allContentfulAbout.edges[0].node.description}</Text>
-        </SectionContainer>
-        <SectionContainer>
-          <Section>When:&nbsp;</Section>
-          <Text>{about.allContentfulAbout.edges[0].node.dateTime}</Text>
-        </SectionContainer>
-        <SectionContainer>
-          <Section>Where:&nbsp;</Section>
-          <Text>{about.allContentfulAbout.edges[0].node.location}</Text>
-        </SectionContainer>
-      </Hero>
-      <Content>{children}</Content>
-    </div>
+    <>
+      <div className="max-w-full mx-auto bg-white p-8">
+        <Header />
+        <div id="about">
+          <Hero>
+            <SectionContainer className="flex-col mb-6">
+              <Title>{about.allContentfulAbout.edges[0].node.hero}</Title>
+              <Text>{about.allContentfulAbout.edges[0].node.description}</Text>
+            </SectionContainer>
+            <SectionContainer>
+              <Section>When:&nbsp;</Section>
+              <Text>{about.allContentfulAbout.edges[0].node.dateTime}</Text>
+            </SectionContainer>
+            <SectionContainer>
+              <Section>Where:&nbsp;</Section>
+              <Text>{about.allContentfulAbout.edges[0].node.location}</Text>
+            </SectionContainer>
+          </Hero>
+        </div>
+        <Content>{children}</Content>
+      </div>
+      <Footer />
+    </>
   );
 };
 

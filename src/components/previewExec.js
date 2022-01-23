@@ -20,7 +20,7 @@ const HeadshotContainer = styled.div`
 `;
 
 const Description = styled.div`
-  ${tw`rounded-md text-center bg-[#333] px-14 py-2.5`}
+  ${tw`rounded-md text-center bg-slate px-14 py-2.5`}
 `;
 
 const Name = styled.p`

@@ -30,14 +30,14 @@ const Execs = () => {
   `);
 
   return (
-    <div>
+    <div id="execs">
       <Title>Exec Board</Title>
       {officers && (
-        <>
-          {officers.allContentfulOfficer.edges.map((exec) => {
-            return <PreviewExec exec={exec.node} />;
+        <div className="mt-8">
+          {officers.allContentfulOfficer.edges.map((exec, i) => {
+            return <PreviewExec key={i} exec={exec.node} />;
           })}
-        </>
+        </div>
       )}
     </div>
   );

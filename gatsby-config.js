@@ -67,12 +67,6 @@ module.exports = {
       },
     },
     "gatsby-plugin-postcss",
-    // {
-    //     resolve: "gatsby-plugin-postcss",
-    //     options: {
-    //         develop: true,
-    //         tailwind: true
-    //     }
-    // }
+    "gatsby-plugin-anchor-links",
   ],
 };
