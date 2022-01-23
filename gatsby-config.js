@@ -1,15 +1,38 @@
+let contentfulConfig;
+try {
+  // Load the Contentful config from the .contentful.json
+  contentfulConfig = require("./.contentful");
+} catch (_) {}
+
+// Overwrite the Contentful config with environment variables if they exist
+contentfulConfig = {
+  spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
+  accessToken:
+    process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
+};
+
+const { spaceId, accessToken } = contentfulConfig;
+
+if (!spaceId || !accessToken) {
+  throw new Error(
+    "Contentful spaceId and the delivery token need to be provided."
+  );
+}
+
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
+    siteUrl: "https://gtdesignclub.com",
     title: "GT Design Club",
+    description: "The homepage for Georgia Tech's Design Club.",
+    social: {
+      instagram: "https://instagram.com/gtdesignclub",
+      facebook: "https://facebook.com/gtdesignclub",
+    },
   },
   plugins: [
     {
       resolve: "gatsby-source-contentful",
-      options: {
-        accessToken: "iCk9r_v0jnD7usQWQCkxfZBK3IwnRzmAizalkUrLs2o",
-        spaceId: "cnmgiouxtigp",
-      },
+      options: contentfulConfig,
     },
     "gatsby-plugin-sass",
     "gatsby-plugin-image",
@@ -18,7 +41,10 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        icon: "src/images/icon.png",
+        name: "GT Design Club",
+        short_name: "GT Design Club",
+        start_url: "/",
+        icon: "src/images/logo.png",
       },
     },
     "gatsby-plugin-sharp",
@@ -31,5 +57,16 @@ module.exports = {
       },
       __key: "images",
     },
+    "gatsby-plugin-emotion",
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /icons/,
+        },
+      },
+    },
+    "gatsby-plugin-postcss",
+    "gatsby-plugin-anchor-links",
   ],
 };
