@@ -4,7 +4,7 @@ import React from "react";
 import tw, { styled } from "twin.macro";
 
 const Image = styled(GatsbyImage)`
-  ${tw`rounded-sm w-4/5 shadow-lg`}
+  ${tw`rounded-sm border border-black w-4/5 shadow-lg`}
 `;
 
 const DetailsContainer = styled.div`
@@ -12,7 +12,7 @@ const DetailsContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  ${tw`font-body font-bold text-black text-lg`}
+  ${tw`text-center font-body font-bold text-black text-lg`}
 `;
 
 const DateContainer = styled.div`
@@ -20,7 +20,7 @@ const DateContainer = styled.div`
 `;
 
 const Description = styled.p`
-  ${tw``}
+  ${tw`w-[fit-content]`}
 `;
 
 const SocialButton = styled("a")`
@@ -28,7 +28,7 @@ const SocialButton = styled("a")`
 `;
 
 const FlexContainer = styled.div`
-  ${tw`flex flex-col mt-2 sm:flex-row`}
+  ${tw`flex flex-col mt-2 items-center sm:flex-row`}
 `;
 
 // TODO: Find better layout for mobile
@@ -37,7 +37,7 @@ const PreviewEvent = ({ event }) => {
   const date = event.date;
   const dayWeek = moment(date).format("dddd");
   const dayMonth = moment(date).format("MM.DD");
-  const text = Object.assign({}, event.description.description.split("\n"));
+  const text = event.description.description.split("\n");
 
   return (
     <div>
@@ -55,7 +55,7 @@ const PreviewEvent = ({ event }) => {
               {dayMonth}
             </p>
           </DateContainer>
-          {Object.entries(text).map(([key, val]) =>
+          {text.map((val, i) =>
             val ? <Description>{val}</Description> : <br />
           )}
         </FlexContainer>

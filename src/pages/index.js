@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { GlobalStyles } from "twin.macro";
 import Events from "../components/events";
+import Execs from "../components/execs";
 import Layout from "../components/layout";
 
 const IndexPage = ({ data }) => {
@@ -26,6 +27,7 @@ const IndexPage = ({ data }) => {
       <GlobalStyles />
       <Layout>
         <Events />
+        <Execs />
       </Layout>
     </>
   );
