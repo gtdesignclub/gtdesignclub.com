@@ -28,6 +28,10 @@ const SectionContainer = styled.div`
   ${tw`flex text-center`}
 `;
 
+const SuggestionButton = styled("a")`
+  ${tw`bg-white rounded-sm text-black text-center py-2`}
+`;
+
 const Layout = ({ children }) => {
   const about = useStaticQuery(graphql`
     query {

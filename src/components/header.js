@@ -8,11 +8,11 @@ import Mail from "../icons/mail.svg";
 import logo from "../images/logo-text.png";
 
 const FlexContainer = styled.div`
-  ${tw`flex flex-row flex-nowrap justify-center items-center sm:justify-between`}
+  ${tw`flex flex-row flex-nowrap justify-between items-center`}
 `;
 
 const SocialContainer = styled.div`
-  ${tw`hidden sm:flex flex-row flex-nowrap justify-between items-center`}
+  ${tw`flex flex-row flex-nowrap justify-between items-center`}
 `;
 
 const LogoLink = styled(Link)`
@@ -20,7 +20,7 @@ const LogoLink = styled(Link)`
 `;
 
 const LogoImage = styled.img`
-  ${tw`m-auto w-8/12 sm:w-4/5`};
+  ${tw`sm:m-auto w-8/12 sm:w-4/5`};
 `;
 
 const SocialLink = styled("a")`
@@ -61,16 +61,16 @@ const Header = () => {
         </LogoLink>
         <SocialContainer>
           <SocialLink href={facebook}>
-            <Facebook />
+            <Facebook className="w-5" />
           </SocialLink>
           <SocialLink href={instagram}>
-            <Instagram />
+            <Instagram className="w-5" />
           </SocialLink>
           <SocialLink href={discord}>
-            <Discord />
+            <Discord className="w-5" />
           </SocialLink>
           <SocialLink href={"mailto:" + email}>
-            <Mail />
+            <Mail className="w-5" />
           </SocialLink>
         </SocialContainer>
       </FlexContainer>
