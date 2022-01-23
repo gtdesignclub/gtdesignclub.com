@@ -5,19 +5,19 @@ import tw, { styled } from "twin.macro";
 import PreviewEvent from "./previewEvent";
 
 const Title = styled.h1`
-  ${tw`font-header text-black text-xl mt-8 mb-4`}
+  ${tw`font-header text-xl mt-8 mb-4 sm:text-3xl`}
 `;
 
 const Table = styled.table`
-  ${tw`table-fixed border-collapse border border-black bg-white rounded-md mt-3`}
+  ${tw`table-fixed border-collapse border border-slate bg-white rounded-md mt-3`}
 `;
 
 const Row = styled.tr`
-  ${tw`odd:bg-[#EDEDED] text-sm`}
+  ${tw`odd:bg-[#EDEDED] text-sm sm:text-lg`}
 `;
 
 const Cell = styled.td`
-  ${tw`p-1`}
+  ${tw`p-1 sm:p-6`}
 `;
 const Events = () => {
   const events = useStaticQuery(graphql`
@@ -59,20 +59,22 @@ const Events = () => {
   );
 
   return (
-    <div id="events">
+    <div id="events" css={tw`sm:mt-28`}>
       <Title>Upcoming Events</Title>
-      <PreviewEvent event={events.allContentfulEvent.edges[0].node} />
-      <Table>
-        <tbody>
-          {Object.entries(rows).map(([key, val]) => (
-            <Row key={val.id}>
-              <Cell>{val.date}</Cell>
-              <Cell>{val.name}</Cell>
-              <Cell>{val.description}</Cell>
-            </Row>
-          ))}
-        </tbody>
-      </Table>
+      <div css={tw`sm:flex sm:flex-col`}>
+        <PreviewEvent event={events.allContentfulEvent.edges[0].node} />
+        <Table>
+          <tbody>
+            {Object.entries(rows).map(([key, val]) => (
+              <Row key={val.id}>
+                <Cell css={tw`font-bold text-[#999]`}>{val.date}</Cell>
+                <Cell css={tw`font-bold sm:w-1/4`}>{val.name}</Cell>
+                <Cell>{val.description}</Cell>
+              </Row>
+            ))}
+          </tbody>
+        </Table>
+      </div>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import React from "react";
 import tw, { css, styled } from "twin.macro";
 
 const Container = styled.div`
-  ${tw`flex flex-col items-center mb-8`}
+  ${tw`flex flex-col items-center mb-8 sm:mx-auto sm:mt-12 lg:mr-24`}
 `;
 
 const dynamicStyle = ({ margin }) =>
@@ -20,19 +20,19 @@ const HeadshotContainer = styled.div`
 `;
 
 const Description = styled.div`
-  ${tw`rounded-md text-center bg-slate px-14 py-2.5`}
+  ${tw`rounded-md text-center bg-slate px-14 py-2.5 sm:w-72`}
 `;
 
 const Name = styled.p`
-  ${tw`text-white text-lg font-bold mb-[5px]`}
+  ${tw`text-white text-lg font-bold mb-[5px] sm:text-xl`}
 `;
 
 const Major = styled.p`
-  ${tw`text-white text-xs font-light mb-[15px]`}
+  ${tw`text-white text-xs font-light mb-[15px] sm:text-sm`}
 `;
 
 const Position = styled.p`
-  ${tw`text-white text-sm text-base`}
+  ${tw`text-white text-base`}
 `;
 
 const PreviewExec = ({ exec }) => {

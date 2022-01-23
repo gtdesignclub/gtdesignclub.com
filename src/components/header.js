@@ -20,7 +20,7 @@ const LogoLink = styled(Link)`
 `;
 
 const LogoImage = styled.img`
-  ${tw`sm:m-auto w-8/12 sm:w-4/5`};
+  ${tw`w-8/12 sm:w-4/5`};
 `;
 
 const SocialLink = styled("a")`
@@ -42,16 +42,16 @@ const Header = () => {
   `);
   const facebook = links.allContentfulLink.edges.find(
     (el) => el.node.platform.toLowerCase() === "facebook"
-  ).link;
+  ).node.link;
   const instagram = links.allContentfulLink.edges.find(
     (el) => el.node.platform.toLowerCase() === "instagram"
-  ).link;
+  ).node.link;
   const discord = links.allContentfulLink.edges.find(
     (el) => el.node.platform.toLowerCase() === "discord"
-  ).link;
+  ).node.link;
   const email = links.allContentfulLink.edges.find(
     (el) => el.node.platform.toLowerCase() === "email"
-  ).link;
+  ).node.link;
 
   return (
     <div>
@@ -61,16 +61,16 @@ const Header = () => {
         </LogoLink>
         <SocialContainer>
           <SocialLink href={facebook}>
-            <Facebook className="w-5" />
+            <Facebook css={tw`w-5 sm:w-max`} />
           </SocialLink>
           <SocialLink href={instagram}>
-            <Instagram className="w-5" />
+            <Instagram css={tw`w-5 sm:w-max`} />
           </SocialLink>
           <SocialLink href={discord}>
-            <Discord className="w-5" />
+            <Discord css={tw`w-5 sm:w-max`} />
           </SocialLink>
           <SocialLink href={"mailto:" + email}>
-            <Mail className="w-5" />
+            <Mail css={tw`w-5 sm:w-max`} />
           </SocialLink>
         </SocialContainer>
       </FlexContainer>

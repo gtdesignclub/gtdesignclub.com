@@ -4,7 +4,7 @@ import tw, { styled } from "twin.macro";
 import PreviewExec from "./previewExec";
 
 const Title = styled.h1`
-  ${tw`font-header text-black text-xl mt-8 mb-4`}
+  ${tw`font-header text-xl mt-8 mb-4 sm:text-3xl`}
 `;
 
 const Execs = () => {
@@ -30,10 +30,10 @@ const Execs = () => {
   `);
 
   return (
-    <div id="execs">
+    <div id="execs" css={tw`mt-28 mb-16`}>
       <Title>Exec Board</Title>
       {officers && (
-        <div className="mt-8">
+        <div className="mt-8 sm:flex sm:flex-wrap sm:justify-center">
           {officers.allContentfulOfficer.edges.map((exec, i) => {
             return <PreviewExec key={i} exec={exec.node} />;
           })}

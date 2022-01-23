@@ -7,7 +7,10 @@ import Execs from "../components/execs";
 import Layout from "../components/layout";
 
 const SuggestionButton = styled("a")`
-  ${tw`flex flex-col bg-white rounded-sm border border-solid border-black text-black text-center py-2.5`}
+  ${tw`flex flex-col bg-white rounded-sm border border-solid 
+      border-black text-black text-center py-2.5
+      sm:w-96 sm:text-xl hover:bg-slate hover:text-white hover:drop-shadow-lg
+      transition-all ease-out duration-300`}
 `;
 
 const IndexPage = ({ data }) => {
@@ -49,10 +52,12 @@ const IndexPage = ({ data }) => {
       <Layout>
         <Events />
         <Execs />
-        <SuggestionButton href={link}>
-          <span className="font-bold">Suggestion Form</span>
-          <span className="text-sm">What would you like to see?</span>
-        </SuggestionButton>
+        <div css={tw`sm:flex sm:items-center sm:m-auto`}>
+          <SuggestionButton href={link}>
+            <span className="font-bold">Suggestion Form</span>
+            <span className="text-sm">What would you like to see?</span>
+          </SuggestionButton>
+        </div>
       </Layout>
     </>
   );

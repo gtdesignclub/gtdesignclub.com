@@ -4,31 +4,43 @@ import React from "react";
 import tw, { styled } from "twin.macro";
 
 const Image = styled(GatsbyImage)`
-  ${tw`rounded-sm border border-black w-4/5 shadow-lg`}
+  ${tw`rounded-sm border border-slate w-4/5 shadow-lg sm:w-96 sm:mr-3`}
 `;
 
 const DetailsContainer = styled.div`
-  ${tw`rounded-sm border border-black p-2 flex flex-col items-center mt-4`}
+  ${tw`rounded-sm border border-slate p-2 flex flex-col items-center mt-4 
+      sm:items-start sm:p-10 sm:mt-0 sm:w-full`}
 `;
 
 const Title = styled.h1`
-  ${tw`text-center font-body font-bold text-black text-lg`}
+  ${tw`text-center font-body font-bold text-lg sm:text-left sm:text-2xl`}
 `;
 
 const DateContainer = styled.div`
-  ${tw`flex flex-col items-center mb-2`}
+  ${tw`flex flex-col items-center mb-2 sm:items-start sm:w-1/4 sm:mr-5`}
+`;
+
+const DayWeek = styled.p`
+  ${tw`w-[fit-content] font-bold text-xs text-transform: uppercase 
+      text-[#AAA] sm:text-lg`}
+`;
+
+const DayMonth = styled.p`
+  ${tw`w-[fit-content] font-bold text-2xl sm:text-3xl`}
 `;
 
 const Description = styled.p`
-  ${tw`w-[fit-content]`}
+  ${tw`w-[fit-content] sm:text-xl`}
 `;
 
 const SocialButton = styled("a")`
-  ${tw`bg-slate w-[fit-content] inline-block text-white font-bold text-xs px-9 py-2 mt-5 rounded-sm hover:bg-[#4A4A4A]`}
+  ${tw`bg-[#4A4A4A] w-[fit-content] inline-block text-white 
+      font-bold text-xs px-9 py-2 mt-5 rounded-sm
+      sm:text-lg sm:rounded-md sm:w-4/12 sm:text-center first:mr-3`}
 `;
 
 const FlexContainer = styled.div`
-  ${tw`flex flex-col mt-2 items-center sm:flex-row`}
+  ${tw`flex flex-col mt-2 items-center sm:flex-row sm:items-start`}
 `;
 
 const PreviewEvent = ({ event }) => {
@@ -39,28 +51,35 @@ const PreviewEvent = ({ event }) => {
   const text = event.description.description.split("\n");
 
   return (
-    <div>
-      <div className="flex flex-col items-center">
-        {image && <Image alt={event.name} title={event.name} image={image} />}
-      </div>
+    <div css={tw`sm:flex`}>
+      {image && (
+        <div className="flex flex-col items-center">
+          <Image alt={event.name} title={event.name} image={image} />
+        </div>
+      )}
       <DetailsContainer>
         <Title>{event.name}</Title>
         <FlexContainer>
           <DateContainer>
-            <p className="w-fit font-bold text-xs text-gray-400 text-transform: uppercase">
-              {dayWeek}
-            </p>
-            <p className="w-fit font-bold text-2xl text-slate-700">
-              {dayMonth}
-            </p>
+            <DayWeek>{dayWeek}</DayWeek>
+            <DayMonth>{dayMonth}</DayMonth>
           </DateContainer>
-          {text.map((val, i) =>
-            val ? <Description key={i}>{val}</Description> : <br />
+          <div>
+            {text.map((val, i) => (
+              <Description key={i}>{val}</Description>
+            ))}
+          </div>
+        </FlexContainer>
+        <FlexContainer css={tw`w-full justify-center`}>
+          {event.instagramLink && (
+            <SocialButton href={event.instagramLink}>Instagram</SocialButton>
+          )}
+          {event.facebookLink && (
+            <SocialButton href={event.facebookLink} css={tw`bg-slate`}>
+              Facebook
+            </SocialButton>
           )}
         </FlexContainer>
-        {event.instagramLink && (
-          <SocialButton href={event.instagramLink}>Instagram</SocialButton>
-        )}
       </DetailsContainer>
     </div>
   );
