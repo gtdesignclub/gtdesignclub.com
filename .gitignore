@@ -3,3 +3,5 @@ node_modules/
 public/
 .contentful.json
 jsconfig.json
+*.zip
+.htaccess
