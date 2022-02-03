@@ -33,7 +33,7 @@ const Execs = () => {
     <div id="execs" css={tw`mt-28 mb-16`}>
       <Title>Exec Board</Title>
       {officers && (
-        <div className="mt-8 sm:flex sm:flex-wrap sm:justify-center">
+        <div className="mt-8 sm:grid sm:grid-cols-exec">
           {officers.allContentfulOfficer.edges.map((exec, i) => {
             return <PreviewExec key={i} exec={exec.node} />;
           })}

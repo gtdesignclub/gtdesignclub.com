@@ -13,6 +13,9 @@ module.exports = {
       colors: {
         slate: "#333",
       },
+      gridTemplateColumns: {
+        exec: "repeat(auto-fill,minmax(400px, 1fr))",
+      },
     },
   },
   variants: {
