@@ -1,7 +1,7 @@
 node_modules/
 .cache/
 public/
-.contentful.json
+.env
 jsconfig.json
 *.zip
 .htaccess
