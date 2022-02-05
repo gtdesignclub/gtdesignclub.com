@@ -33,8 +33,8 @@ jobs:
             - "public"
 
   deploy:
-    docker:
-      - image: cimg/node:16.13.2
+    machine:
+      image: ubuntu-2004:202111-02
     working_directory: ~/gtdesignclub.com
     steps:
       - checkout
@@ -44,7 +44,7 @@ jobs:
       - run: 
           name: Deploying over SSH...
           command: |
-            scp -r ~/gtdesignclub.com/public/ $SSH_USER@$SSH_HOST:$SSH_DEPLOY_PATH
+            scp -r ~/gtdesignclub.com/public/ -p $SSH_PORT $SSH_USER@$SSH_HOST:$SSH_DEPLOY_PATH
 
 workflows:
   build-and-deploy:
