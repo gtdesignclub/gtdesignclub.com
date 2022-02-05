@@ -2,10 +2,53 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: alpine:3.7
+      - image: circleci/node:17.4.0
+    working_directory: ~/gtdesignclub.com
     steps:
+      - checkout
+      # Check for cached dependencies
+      - restore_cache:
+          key: v1-deps-{{ checksum "package-lock.json" }}
+      # Install dependencies
       - run:
-          name: The First Step
+          name: Installing dependencies... 
+          command: npm install
+      # Update cache
+      - save_cache:
+          key: v1-deps-{{ checksum "package-lock.json" }}
+          paths: 
+            - node_modules
+      # Build & cache project
+      - run:
+          name: Building site...
+          command: npm run build
+      - save_cache:
+          paths:
+            - .cache
+            - public
+          key: v1-gatsby-cache-{{ epoch }}
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - "public"
+
+  deploy:
+    machine:
+      enabled: true
+    working_directory: ~/gtdesignclub.com
+    steps:
+      - run: 
+          name: Deploying over SSH...
           command: |
-            echo 'Hello World!'
-            echo 'This is the delivery pipeline'
+            scp -r ~/gtdesignclub.com/public/ "$SSH_USER@$SSH_HOST:$SSH_DEPLOY_PATH"
+
+workflows:
+  build-and-deploy:
+    jobs:
+        - build
+        - deploy:
+            requires:
+              - build
+            filters:
+              branches: 
+                only: main
