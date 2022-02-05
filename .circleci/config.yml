@@ -33,14 +33,18 @@ jobs:
             - "public"
 
   deploy:
-    machine:
-      enabled: true
+    docker:
+      - image: circleci/node:17.4.0
     working_directory: ~/gtdesignclub.com
     steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "55:f0:8d:06:d6:64:93:de:fe:d4:2c:25:db:e7:87:98"
       - run: 
           name: Deploying over SSH...
           command: |
-            scp -r ~/gtdesignclub.com/public/ "$SSH_USER@$SSH_HOST:$SSH_DEPLOY_PATH"
+            scp -r ~/gtdesignclub.com/public/ $SSH_USER@$SSH_HOST:$SSH_DEPLOY_PATH
 
 workflows:
   build-and-deploy:
