@@ -8,7 +8,7 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
@@ -19,6 +19,7 @@
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
     "autoprefixer": "^10.4.0",
+    "dotenv": "^16.0.1",
     "gatsby": "^4.2.0",
     "gatsby-plugin-anchor-links": "^1.2.1",
     "gatsby-plugin-emotion": "^7.2.0",
