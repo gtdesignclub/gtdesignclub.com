@@ -18,6 +18,4 @@ jobs:
       - name: Install Dependencies
         uses: bahmutov/npm-install@v1
       - name: Build Project
-        uses: jzweifel/gatsby-cli-github-action@master
-        with:
-          gatsby-arg: build
+        run: npm run build
