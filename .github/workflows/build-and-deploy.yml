@@ -23,6 +23,7 @@ jobs:
           version: 8
           run_install: false
       - name: Get pnpm store dir
+        id: pnpm-cache
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
