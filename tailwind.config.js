@@ -1,25 +1,17 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: [],
-  darkMode: false,
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
-    fontFamily: {
-      header: ["'Marko One'", "sans-serif"],
-      body: ["Rubik", "sans-serif"],
-    },
     extend: {
-      spacing: {
-        112: "37rem",
-      },
       colors: {
-        slate: "#333",
-      },
-      gridTemplateColumns: {
-        exec: "repeat(auto-fill,minmax(400px, 1fr))",
+        primary: "#333333",
+        secondary: "#AAAAAA",
       },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 };
