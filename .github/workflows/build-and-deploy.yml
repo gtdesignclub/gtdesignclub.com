@@ -36,9 +36,10 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install
-      - name: Build with .env
+      - name: Create .env
         uses: SpicyPizza/create-envfile@v1.3
         with:
+          directory: ./
           envkey_CONTENTFUL_SPACE_ID: ${{ secrets.CONTENFUL_SPACE_ID }}
           envkey_CONTENTFUL_TOKEN: ${{ secrets.CONTENFUL_TOKEN }}
       - name: Build app
