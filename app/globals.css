@@ -3,8 +3,35 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    @apply text-primary;
+  html,
+  body,
+  #root {
+    @apply text-primary lg:text-lg;
+  }
+
+  h1 {
+    @apply text-xl lg:text-2xl;
+  }
+  h2 {
+    @apply text-lg lg:text-xl;
+  }
+  h3 {
+    @apply text-base lg:text-lg;
+  }
+  h4 {
+    @apply text-sm lg:text-base;
+  }
+
+  li {
+    @apply hover:underline;
+  }
+
+  .social a {
+    @apply text-secondary transition duration-150 hover:text-white;
+  }
+
+  .social.dark a {
+    @apply hover:text-primary;
   }
 }
 
@@ -15,5 +42,17 @@
 
   .col {
     @apply flex flex-col;
+  }
+
+  .button {
+    @apply bg-white text-center text-primary border border-primary rounded-md transition duration-150 hover:bg-primary-light hover:text-white hover:shadow-md hover:border-primary-light;
+  }
+
+  .button-primary {
+    @apply bg-primary text-white;
+  }
+
+  .button-grey {
+    @apply bg-grey border-grey text-white hover:bg-grey-light hover:border-grey-light;
   }
 }

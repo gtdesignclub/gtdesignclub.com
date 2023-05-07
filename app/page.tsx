@@ -14,7 +14,7 @@ const Home = async () => {
   return (
     <>
       <div className="p-8">
-        <Header />
+        <Header socials={socials} />
         <Hero socials={socials} {...about} />
         <Events events={events} />
         <Execs execs={execs} />

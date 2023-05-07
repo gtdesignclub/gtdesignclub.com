@@ -12,29 +12,29 @@ const Hero = ({ hero, description, dateTime, location, socials }: Props) => {
   return (
     <>
       <div id="heroContainer" className="mt-10">
-        <h1 className="text-xl font-bold">{hero}</h1>
-        <h3 className="mt-3 text-base">{description}</h3>
+        <h1 className="font-bold">{hero}</h1>
+        <h2 className="mt-3">{description}</h2>
         <div className="mt-5">
-          <h3>
+          <h2>
             <span className="mr-2 font-bold">When:</span>
             {dateTime}
-          </h3>
-          <h3>
+          </h2>
+          <h2>
             <span className="mr-2 font-bold">Where:</span>
             {location}
-          </h3>
+          </h2>
         </div>
         <div className="mt-5">
           <Link
             target="_blank"
             href={discord?.link ?? ""}
-            className="p-3 min-w-38 border border-primary bg-primary rounded-md text-white"
+            className="p-3 min-w-38 button button-primary"
           >
             Join us on Discord
           </Link>
           <Link
             href={newsletter?.link ?? ""}
-            className="p-3 ml-2 min-w-38 border border-primary rounded-md"
+            className="p-3 ml-2 min-w-38 button"
           >
             Our Newsletter
           </Link>
