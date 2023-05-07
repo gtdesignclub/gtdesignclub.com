@@ -40,11 +40,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Create .env
-        uses: SpicyPizza/create-envfile@v1.3
+        uses: ozaytsev86/create-env-file@v1
         with:
-          directory: ./
-          envkey_CONTENTFUL_SPACE_ID: ${{ secrets.CONTENFUL_SPACE_ID }}
-          envkey_CONTENTFUL_TOKEN: ${{ secrets.CONTENFUL_TOKEN }}
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENFUL_SPACE_ID }}
+          CONTENTFUL_TOKEN: ${{ secrets.CONTENFUL_TOKEN }}
       - name: Build app
         run: pnpm build
       - name: Deploy
