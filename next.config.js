@@ -6,6 +6,7 @@ const nextConfig = {
     loader: "custom",
     loaderFile: "./utils/loader.ts",
     domains: ["images.ctfassets.net"],
+    path: "/",
     remotePatterns: [
       {
         hostname: "images.ctfassets.net",
