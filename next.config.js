@@ -5,11 +5,10 @@ const nextConfig = {
     unoptimized: true,
     loader: "custom",
     loaderFile: "./utils/loader.ts",
+    domains: ["images.ctfassets.net"],
     remotePatterns: [
       {
-        protocol: "https",
         hostname: "images.ctfassets.net",
-        pathname: "**",
       },
     ],
   },
