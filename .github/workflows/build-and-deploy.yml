@@ -39,11 +39,17 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+          envkey_DEBUG: true
+          envkey_CONTENTFUL_SPACE_ID: ${{ secrets.CONTENFUL_SPACE_ID }}
+          envkey_CONTENTFUL_TOKEN: ${{ secrets.CONTENFUL_TOKEN }}
+          file_name: .env
+          fail_on_empty: true
       - name: Create .env
         uses: ozaytsev86/create-env-file@v1
         with:
-          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENFUL_SPACE_ID }}
-          CONTENTFUL_TOKEN: ${{ secrets.CONTENFUL_TOKEN }}
       - name: Build app
         run: pnpm build
       - name: Deploy
