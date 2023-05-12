@@ -32,7 +32,7 @@ const Footer = ({ socials }: Props) => {
         id="footerContainer"
         className="hidden lg:row items-start h-52 py-6 px-10 bg-primary text-white"
       >
-        <div className="col h-full">
+        <div className="col w-3/12 h-full">
           <div className="row">
             <div className="col">
               <h2 className="mb-2">Get in touch</h2>
@@ -40,7 +40,7 @@ const Footer = ({ socials }: Props) => {
             </div>
           </div>
         </div>
-        <div className="col h-full">
+        <div className="col w-3/12 h-full">
           <h2 className="mb-2">Design Club</h2>
           <ul className="col">
             <li>
@@ -55,7 +55,7 @@ const Footer = ({ socials }: Props) => {
           </ul>
         </div>
         {newsletter && (
-          <div className="col h-full">
+          <div className="col w-6/12 h-full">
             <h2 className="mb-2">Subscribe</h2>
             <p className="mb-3">
               Sign up for our weekly newsletter for more info on meetings and
