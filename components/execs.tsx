@@ -27,7 +27,7 @@ const Execs = ({ execs }: Props) => {
                       fill
                     />
                   </div>
-                  <div className="w-4/5 lg:w-3/5 mx-auto mt-2 py-3 rounded-md bg-primary text-center text-white">
+                  <div className="w-4/5 mx-auto mt-2 py-3 rounded-md bg-primary text-center text-white">
                     <p className="font-bold">{e.name}</p>
                     <p className="font-thin">{e.major}</p>
                     <p className="mt-4">{e.position}</p>
