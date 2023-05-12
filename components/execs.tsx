@@ -1,3 +1,4 @@
+import { assetURL } from "@/utils/queries";
 import { ExecEntry } from "@/utils/types";
 import { Marko_One } from "next/font/google";
 import Image from "next/image";
@@ -16,13 +17,13 @@ const Execs = ({ execs }: Props) => {
         <div className="md:grid md:grid-cols-2 lg:grid-cols-3">
           {execs
             .sort((a, b) => a.order - b.order)
-            .map((e) => (
+            .map(async (e) => (
               <>
                 <div className="mb-7">
                   <div className="relative w-60 h-60 mx-auto">
                     <Image
                       className="rounded-full border border-primary"
-                      src={`https:${e.photo.fields.file.url}`}
+                      src={await assetURL(e.photo.sys.id)}
                       alt={e.name}
                       fill
                     />

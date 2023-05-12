@@ -1,3 +1,4 @@
+import { assetURL } from "@/utils/queries";
 import { EventEntry } from "@/utils/types";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
@@ -23,16 +24,20 @@ const Events = ({ events }: Props) => {
       <div id="eventsContainer" className="mt-16">
         <h1 className={`mb-5 ${markoOne.className}`}>Upcoming Events</h1>
         <div id="previewEventContainer" className="col md:row">
-          {previewEvent?.photo && (
-            <div className="relative w-full md:max-w-[20rem] min-h-[16rem] mr-2 mb-3 md:mb-0">
-              <Image
-                className="rounded-md"
-                src={`https:${previewEvent.photo.fields.file.url}`}
-                alt={previewEvent.name}
-                fill
-              />
-            </div>
-          )}
+          {previewEvent?.photo &&
+            new Array(1).fill(1).map(async () => (
+              <div
+                key={1}
+                className="relative w-full md:max-w-[20rem] min-h-[16rem] mr-2 mb-3 md:mb-0"
+              >
+                <Image
+                  className="rounded-md"
+                  src={await assetURL(previewEvent.photo.sys.id)}
+                  alt={previewEvent.name}
+                  fill
+                />
+              </div>
+            ))}
           <div className="w-full min-h-[16rem] p-4 border border-primary rounded-md">
             <h2 className="mb-2 font-bold">{previewEvent.name}</h2>
             <div className="row justify-start items-start mb-6">

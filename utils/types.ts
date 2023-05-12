@@ -26,3 +26,13 @@ export type ExecEntry = {
   major: string;
   order: number;
 };
+
+type Only<T, U> = {
+  [P in keyof T]: T[P];
+} & {
+  [P in keyof U]?: never;
+};
+
+type Either<T, U> = Only<T, U> | Only<U, T>;
+
+export type FetchArgs = Either<{ content_type: string }, { asset_id: string }>;

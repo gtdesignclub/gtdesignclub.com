@@ -6,7 +6,7 @@
   html,
   body,
   #root {
-    @apply text-primary lg:text-lg;
+    @apply h-full text-primary lg:text-lg;
   }
 
   h1 {

@@ -5,12 +5,13 @@ import Header from "@/components/header";
 import Hero from "@/components/hero";
 import { getAbout, getEvents, getExecs, getSocials } from "@/utils/queries";
 
+export const revalidate = false;
+
 const Home = async () => {
   const about = await getAbout();
   const socials = await getSocials();
   const events = await getEvents();
   const execs = await getExecs();
-
   return (
     <>
       <div className="p-8">
