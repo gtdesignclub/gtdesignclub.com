@@ -14,14 +14,14 @@ export type EventEntry = {
   name: string;
   date: string;
   description: string;
-  photo?: any;
+  photo?: string;
   instagramLink?: string;
   facebookLink?: string;
 };
 
 export type ExecEntry = {
   name: string;
-  photo: any;
+  photo: string;
   position: string;
   major: string;
   order: number;

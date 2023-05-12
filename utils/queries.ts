@@ -19,24 +19,15 @@ if (!CONTENTFUL_SPACE_ID || !CONTENTFUL_TOKEN) {
 
 const CONTENTFUL_URL = `https://cdn.contentful.com/spaces/${CONTENTFUL_SPACE_ID}/environments/master`;
 
-export const assetURL = async (id: string) => {
-  const data = await fetch(
-    `${CONTENTFUL_URL}/assets/${id}?access_token=${CONTENTFUL_TOKEN}`
-  );
-
-  if (data.ok) {
-    const asset = await data.json();
-    return asset.fields.file.url;
-  }
-};
-
 const fetcher = async (args: FetchArgs) => {
   const baseUrl = `${CONTENTFUL_URL}${
     args.asset_id ? `/${args.asset_id}` : ""
   }${args.content_type ? `/entries` : ""}?access_token=${CONTENTFUL_TOKEN}`;
 
   const res = await fetch(
-    `${baseUrl}${args.content_type ? `&content_type=${args.content_type}` : ""}`
+    `${baseUrl}${
+      args.content_type ? `&content_type=${args.content_type}` : ""
+    }&include=2`
   );
 
   if (!res.ok) {
@@ -58,10 +49,28 @@ export const getSocials = async (): Promise<SocialEntry[]> => {
 
 export const getEvents = async (): Promise<EventEntry[]> => {
   const data = await fetcher({ content_type: "event" });
-  return data.items.map((i: any) => i.fields as EventEntry);
+  return data.items.map((i: any) => {
+    const event: EventEntry = { ...(i.fields as EventEntry) };
+    const photoId = i.fields?.photo?.sys?.id ?? undefined;
+    if (photoId) {
+      event.photo = data.includes.Asset.find(
+        (e: any) => e.sys.id === photoId
+      ).fields.file.url;
+    }
+    return event;
+  });
 };
 
 export const getExecs = async (): Promise<ExecEntry[]> => {
   const data = await fetcher({ content_type: "officers" });
-  return data.items.map((i: any) => i.fields as ExecEntry);
+  return data.items.map((i: any) => {
+    const exec: ExecEntry = { ...(i.fields as ExecEntry) };
+    const photoId = i.fields?.photo?.sys?.id ?? undefined;
+    if (photoId) {
+      exec.photo = data.includes.Asset.find(
+        (e: any) => e.sys.id === photoId
+      ).fields.file.url;
+    }
+    return exec;
+  });
 };
